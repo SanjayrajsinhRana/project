@@ -3,7 +3,8 @@ session_start();
 require ('connection.php');
 $username=$_POST['uname'];
 $password=$_POST['pass'];
-$query="SELECT firstname FROM users where firstname ='$username'";
+$email=$_POST['email'];
+$query="SELECT firstname FROM users where firstname ='$username' AND email='$email' AND password='$password'";
 if($result=mysqli_query($con,$query))
 {
 	$user= mysqli_num_rows($result);
