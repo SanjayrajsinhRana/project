@@ -1,6 +1,8 @@
 <?php
 session_start();
 require ('connection.php');
+$con1= new connection();
+$con=$con1->connect();
 $username=$_POST['uname'];
 $password=$_POST['pass'];
 $email=$_POST['email'];

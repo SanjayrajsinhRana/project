@@ -20,6 +20,8 @@ echo "hello" . "  " .$_SESSION['u_id'];
 		<?php
 echo "total no.of user is=";
 $tno="SELECT firstname,lastname,email,date_created FROM users";
+$con1= new connection();
+$con=$con1->connect();
 $tno2=mysqli_query($con,$tno);
 $rowcount=mysqli_num_rows($tno2);
 echo $rowcount;

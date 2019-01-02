@@ -2,7 +2,8 @@
 require ('connection.php');
 $fname=$_POST['fname'];
 $email=$_POST['email'];
-
+$con1= new connection();
+$con=$con1->connect();
 if (isset($_POST['sign_up']))
 {
 	if ($fname == NULL || $_POST['lname'] == NULL || $_POST['email'] == NULL || $_POST['pass'] == NULL || $_POST['cpass'] == NULL) 
@@ -57,6 +58,6 @@ if (isset($_POST['sign_up']))
 }
 else
 {
-	echo "connection faaaailed".mysqli_error($con);
+	echo "connection failed".mysqli_error($con);
 }
 ?>

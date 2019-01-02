@@ -35,7 +35,7 @@
 			echo "Password And ConfirmPassword must be same.";
 		}
 ?>
-<form action="datamgt.php" method="POST" id="sign_up" name="sign_up">
+<form action="datamgt.php" method="POST" id="sign_up">
 <input type="text" name="fname" placeholder="First Name" id="u_first"><br>
 <input type="text" name="lname" placeholder="Last Name" id="u_last"><br>
 <input type="text" name="email" placeholder="email" id="u_email"><br>
@@ -45,6 +45,10 @@
 -->
 
 
+
+<button type="submit" value="SIGN-UP" id="sign_up" name="sign_up" onclick="return validate()">SIGNUP</button>
+</form>
+</div>
 <script type="text/javascript">
 	function validate()
 	{
@@ -58,28 +62,29 @@
 		if (u_f == "" || u_l== "" || u_e=="" || u_p=="" || u_cp=="") 
 		{
 			window.alert("enter all info");
+			return false;
 		}
 		else if(u_p.length < 8)
 		{
-			window.alert("password must be of size 8")
+			window.alert("password must be of size 8");
+			return false;
 		}
 		else if(u_p != u_cp)
 		{
 			window.alert("password and confirm password must be same");
+			return false;
 		}
 		else if(!re.test(u_e))
 		{
 			window.alert("email must be in proper format");
+			return false;
 		}
 		else
 		{
-			document.getElementById('sign_up').submit();
+			//document.getElementById('sign_up').submit();
+			return true;
 		}
 	}
 </script>
-<input type="button" name="sign_up" value="SIGN-UP"  onclick="validate()">
-
-</form>
-</div>
 </body>
 </html>
