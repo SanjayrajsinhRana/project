@@ -8,15 +8,29 @@
 {
 	position: absolute;
 	margin-left: 500px;
-	margin-top: 250px;
-	border:2px solid gray;
+	margin-top: 100px;
+	border-style: dotted;
+	border-color: gray;
+	border-radius: 20px;
 	padding: 3px;
-	background-color: lightgray;
+	
+}
+input
+{
+	margin: 10px;
+	height: 30px;
+	border-radius: 5px;
+	padding: 5px;
+
 }
 </style>
+<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script> 
+<script src="./assets/jquery.js"></script>
+<script src="./assets/jquery.validate.js"></script>
+
 </head>
 <body bgcolor="lightblue">
-<div class="sign_up">
+<div class="sign_up">	
 <?php 	
 		if(isset($_GET['error']) && $_GET['error'] == 101)
 		{
@@ -35,22 +49,75 @@
 			echo "Password And ConfirmPassword must be same.";
 		}
 ?>
-<form action="datamgt.php" method="POST" id="sign_up">
-<input type="text" name="fname" placeholder="First Name" id="u_first"><br>
-<input type="text" name="lname" placeholder="Last Name" id="u_last"><br>
-<input type="text" name="email" placeholder="email" id="u_email"><br>
-<input type="password" name="pass" placeholder="password" id="u_pass"><br>
-<input type="password" name="cpass" placeholder="confirm password" id="u_cpass"><br>
+<form action="datamgt.php" method="POST" id="up_check">
+<input type="text" name="u_first" placeholder="First Name" id="u_first"><br>
+<input type="text" name="u_last" placeholder="Last Name" id="u_last"><br>
+<input type="text" name="u_email" placeholder="email" id="u_email"><br>
+<input type="password" name="u_pass" placeholder="password" id="u_pass" autocomplete="ok"><br>
+<input type="password" name="u_cpass" placeholder="confirm password" id="u_cpass" autocomplete="okk"><br>
 <!--- <input type="submit" name="submit" value="SIGN-UP">
 -->
 
 
 
-<button type="submit" value="SIGN-UP" id="sign_up" name="sign_up" onclick="return validate()">SIGNUP</button>
+<button type="submit" value="SIGN-UP" id="sign_up" name="sign_up" onclick="validate1()">SIGNUP</button>
 </form>
+<script>
+	
+$().ready(function()
+{
+	$("#up_check").validate(
+	{
+	rules:
+	{
+		u_first:
+		{
+			required:true,
+			minlength:2
+		},
+
+		u_last:
+		{
+			required:true,
+			minlength:2
+		},
+
+		u_email:
+		{
+			required:true,
+			minlength:5
+		},
+	},
+		messages:
+		{
+			u_first:
+			{
+				required:"it's required",
+				minlength:"length must be greater than 2"
+			},
+
+			u_last:
+			{
+				required:"it's required",
+				minlength:"length must be  greater than 2"
+			},
+
+			u_email:
+			{
+				required:"it's required",
+				minlength:"length must be greater than 5"
+			},
+		}
+
+
+});
+});
+
+
+</script>
 </div>
 <script type="text/javascript">
-	function validate()
+	function validate1()
 	{
 		var u_f=document.getElementById('u_first').value;
 		var u_l=document.getElementById('u_last').value;
