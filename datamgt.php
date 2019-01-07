@@ -1,26 +1,26 @@
 <?php
 require ('connection.php');
-$fname=$_POST['fname'];
-$email=$_POST['email'];
+$fname=$_POST['u_first'];
+$email=$_POST['u_email'];
 $con1= new connection();
 $con=$con1->connect();
 if (isset($_POST['sign_up']))
 {
-	if ($fname == NULL || $_POST['lname'] == NULL || $_POST['email'] == NULL || $_POST['pass'] == NULL || $_POST['cpass'] == NULL) 
+	if ($fname == NULL || $_POST['u_last'] == NULL || $_POST['u_email'] == NULL || $_POST['u_pass'] == NULL || $_POST['u_cpass'] == NULL) 
 	{
 	header("Location: ../form/sign-up.php?error=101");	
 	}
 	else
 	{
 
-		if ($_POST['pass'] != $_POST['cpass']) 
+		if ($_POST['u_pass'] != $_POST['u_cpass']) 
 		{
 				
 				header("Location: ../form/sign-up.php?error=105");
 		}
 		else
 		{
-			if (strlen($_POST['pass']) <8) 
+			if (strlen($_POST['u_pass']) <8) 
 			{
 				header("Location: ../form/sign-up.php?error=102");
 			}
@@ -40,10 +40,10 @@ if (isset($_POST['sign_up']))
 			{
 					echo "Error creating table: " . mysqli_error($con);
 			}*/
-				$lname=$_POST['lname'];
+				$lname=$_POST['u_last'];
 				
-				$pass=$_POST['pass'];
-				$cpass=$_POST['cpass'];
+				$pass=$_POST['u_pass'];
+				$cpass=$_POST['u_cpass'];
 				$date=date("Y/m/d");
 
 				$iquery="INSERT INTO users (firstname,lastname,email,password,cpassword,date_created) VALUES ('$fname','$lname','$email','$pass','$cpass','$date')";

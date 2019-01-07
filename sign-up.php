@@ -60,9 +60,38 @@ input
 
 
 
-<button type="submit" value="SIGN-UP" id="sign_up" name="sign_up" onclick="validate1()">SIGNUP</button>
+<button value="SIGN-UP" id="sign_up" name="sign_up">SIGNUP</button>
 </form>
 <script>
+	$(document).ready(function() {
+            $("#sign_up").click
+            (function(event){
+				
+				var u_first = $('#u_first').val();
+				var u_last = $('#u_last').val();
+				var u_email = $('#u_email').val();
+				var u_pass = $('#u_pass').val();
+				var u_cpass = $('#u_cpass').val();
+             	$.ajax({
+			        url: 'getdata.php',
+			        type: 'POST',
+			        data: { fname: u_first, lname: u_last,email:u_email,pass:u_pass,cpass:u_cpass} ,
+			        //contentType: 'application/json; charset=utf-8',
+			        success: function (response) {
+			            header("Location: ../form/login.php?signup=ok");
+			        },
+			        error: function () {
+			            alert("error");
+			        }
+			    }); 
+					
+            });
+         });
+
+</script>
+
+
+<!--<script>
 	
 $().ready(function()
 {
@@ -114,9 +143,9 @@ $().ready(function()
 });
 
 
-</script>
+</script>-->
 </div>
-<script type="text/javascript">
+<!--<script type="text/javascript">
 	function validate1()
 	{
 		var u_f=document.getElementById('u_first').value;
@@ -152,6 +181,6 @@ $().ready(function()
 			return true;
 		}
 	}
-</script>
+</script>-->
 </body>
 </html>

@@ -45,10 +45,11 @@ session_start();
 	{?>
 	<div class="log">
 <form action="check.php" method="POST">
-<input type="text" name="uname" placeholder="Enter Username...">
-<input type="text" name="email" placeholder="Enter Email...">
-<input type="password" name="pass" placeholder="Enter Password..."><br>
-<input type="submit" name="submit" value="LOGIN" class="btn_log">
+<input type="text" name="uname" id="u_first" placeholder="Enter Username...">
+<input type="text" name="email" id="u_email" placeholder="Enter Email...">
+<input type="password" name="pass" id="u_pass" placeholder="Enter Password..."><br>
+<button name="btn_log" value="LOGIN" class="btn_log" id="btn_log">
+LOG_IN</button>
 </form></div>
 <?php }
 ?>
@@ -57,5 +58,35 @@ session_start();
 	<button class="btn2">SIGN-UP</button>
 </a>
 </div>
+
+
+<script>
+	$(document).ready(function() {
+            $("#btn_log").click
+            (function(event){
+				
+				var u_first = $('#u_first').val();
+				var u_email = $('#u_email').val();
+				var u_pass = $('#u_pass').val();
+             	$.ajax({
+			        url: 'check.php',
+			        type: 'POST',
+			        data: { fname: u_first,email:u_email,pass:u_pass} ,
+			        //contentType: 'application/json; charset=utf-8',
+			        success: function (response) {
+			            header("Location: ../form/homepage.php?login=ok");
+			        },
+			        error: function () {
+			            alert("error");
+			        }
+			    }); 
+					
+            });
+         });
+
+</script>
+
+
+
 </body>
 </html>
