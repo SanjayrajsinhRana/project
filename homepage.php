@@ -28,7 +28,7 @@ echo "hello" . "  " .$_SESSION['uname'];
 
 <?php
 echo "total no.of user is=";
-$tno="SELECT ID,firstname,lastname,email,date_created,password,cpassword FROM users";
+$tno="SELECT ID,firstname,lastname,email,date_created,password,cpassword,picture FROM users";
 $con1= new connection();
 $con=$con1->connect();
 $tno2=mysqli_query($con,$tno);
@@ -84,7 +84,8 @@ while($row=mysqli_fetch_assoc($tno2))
 		?>
 		<td>
 			<!--<img src="picture/user-<?php //echo'1';?>.jpg">-->
-			<img src='./picture/user-<?php echo $row["ID"];?>'/>
+			<!--<img src='./picture/user-<?php //echo $row["ID"];?>'/>-->
+			<img src='picture/<?php echo $row["picture"]?>'/>
 		</td>
 </tr>	
 <?php

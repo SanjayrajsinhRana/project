@@ -31,7 +31,7 @@ if (isset($_POST['sign_up']))
 			else
 			{
 				$sqlc="CREATE TABLE IF NOT EXISTS users (ID int NOT NULL AUTO_INCREMENT PRIMARY KEY,firstname varchar(255),
-						lastname varchar(255),email varchar(255),password varchar(255),cpassword varchar(255),date_created varchar(255))";
+						lastname varchar(255),email varchar(255),password varchar(255),cpassword varchar(255),date_created varchar(255),picture varchar(255))";
 			/*	if(mysqli_query($con,$sqlc))
 				{
 					echo "success";
