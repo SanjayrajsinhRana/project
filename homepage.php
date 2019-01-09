@@ -7,19 +7,28 @@ session_start();
 	<title>
 		
 	</title>
+	<style>
+		body{
+			background:linear-gradient(#abb2b9,#ccd1d1,#abb2b9);
+		}
+	</style>
 </head>
-<body bgcolor="lightgreen">		
+<body>		
 <?php
 require ('connection.php');
 if(isset($_SESSION['u_id']))
 {
-echo "hello" . "  " .$_SESSION['u_id'];
-?>	<form action="logout.php" method="POST">
-		<input type="submit" value="logout">
-		</form>
-		<?php
+//echo "hello" . "  " .$_SESSION['u_id'];
+echo "hello" . "  " .$_SESSION['uname'];
+
+?>	
+<form action="logout.php" method="POST">
+<input type="submit" value="logout">
+</form>
+
+<?php
 echo "total no.of user is=";
-$tno="SELECT firstname,lastname,email,date_created FROM users";
+$tno="SELECT ID,firstname,lastname,email,date_created,password,cpassword FROM users";
 $con1= new connection();
 $con=$con1->connect();
 $tno2=mysqli_query($con,$tno);
@@ -65,6 +74,17 @@ while($row=mysqli_fetch_assoc($tno2))
 			<?php
 				echo $row["date_created"];
 			?>
+		</td>
+					<?php
+		echo "<td align='center'><a href=\"delete.php?id=".$row['ID']."\"><input type='submit' value='delete' name='delete'></a></td>";
+		?>
+
+		<?php
+		echo "<td align='center'><a href=\"new_data.php?id=".$row['ID']."&fname=".$row['firstname']."&lname=".$row['lastname']."&email=".$row['email']."&pass=".$row['password']."&cpass=".$row['cpassword']."\"><input type='submit' value='UPDATE' name='update'></a></td>";
+		?>
+		<td>
+			<!--<img src="picture/user-<?php //echo'1';?>.jpg">-->
+			<img src='./picture/user-<?php echo $row["ID"];?>'/>
 		</td>
 </tr>	
 <?php

@@ -6,22 +6,22 @@
 <style type="text/css">
 .sign_up
 {
-	position: absolute;
-	margin-left: 500px;
-	margin-top: 100px;
-	border-style: dotted;
-	border-color: gray;
-	border-radius: 20px;
-	padding: 3px;
-	
+margin-top: 10%;
+height: 550px;
+width: 30%;
 }
+	body{
+			background:linear-gradient(#abb2b9,#ccd1d1,#abb2b9);
+		}
 input
 {
-	margin: 10px;
-	height: 30px;
-	border-radius: 5px;
-	padding: 5px;
-
+			width: 80%;
+			height: 6%;
+			margin-left: 9%;
+			margin-top: 2%;
+			border: 0px;
+			border-radius:5px;
+			padding-left: 2%;
 }
 </style>
 <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script> 
@@ -30,6 +30,7 @@ input
 
 </head>
 <body bgcolor="lightblue">
+	<center>
 <div class="sign_up">	
 <?php 	
 		if(isset($_GET['error']) && $_GET['error'] == 101)
@@ -182,5 +183,6 @@ $().ready(function()
 		}
 	}
 </script>-->
+</center>
 </body>
 </html>
