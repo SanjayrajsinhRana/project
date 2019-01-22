@@ -39,7 +39,9 @@ session_start();
 	<?php
 	if(isset($_SESSION['u_id']))
 	{		
-		header("Location: ../form/homepage.php?login=ok");		
+		// header("Location: ../form/homepage.php?login=ok");		
+				header("Location: ../product/viewproduct.php?login=ok");		
+
 	}
 	else
 	{?>
@@ -54,7 +56,7 @@ LOG_IN</button>
 <?php }
 ?>
 <div class="btn2">
-<a href="sign-up.php">
+<a href="index.php">
 	<button class="btn2">SIGN-UP</button>
 </a>
 </div>

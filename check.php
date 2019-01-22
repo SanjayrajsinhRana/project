@@ -17,7 +17,8 @@ if($result=mysqli_query($con,$query))
 	//	$_SESSION['u_id']= $row['ID'];
 		$_SESSION['u_id']= $row['ID'];
 		$_SESSION['uname']=$row['firstname'];
-		header("Location: ../form/homepage.php?login=ok");	
+		// header("Location: ../form/homepage.php?login=ok");
+		header("Location: ../product/viewproduct.php?login=ok");	
 	}
 	else
 	{

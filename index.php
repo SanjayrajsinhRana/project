@@ -6,17 +6,17 @@
 <style type="text/css">
 .sign_up
 {
-margin-top: 10%;
+margin-top: 5%;
 height: 550px;
 width: 30%;
 }
 	body{
-			background:linear-gradient(#abb2b9,#ccd1d1,#abb2b9);
+			background:linear-gradient(#68829E,#66A5AD,#68829E);
 		}
 input
 {
 			width: 80%;
-			height: 6%;
+			height: 50px;
 			margin-left: 9%;
 			margin-top: 2%;
 			border: 0px;
@@ -25,8 +25,12 @@ input
 }
 .btn_signup
 {
+	width: 80%;
 	margin-top: 2%;
+	margin-left: 9%;
 	border-radius: 15px;
+	height: 50px;
+
 }
 </style>
 <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script> 
@@ -55,12 +59,13 @@ input
 			echo "Password And ConfirmPassword must be same.";
 		}
 ?>
+<h1 style="color: white; font-family: sans-serif;">SIGN-UP</h1>
 <form action="datamgt.php" method="POST" id="up_check">
-<input type="text" name="u_first" placeholder="First Name" id="u_first"><br>
-<input type="text" name="u_last" placeholder="Last Name" id="u_last"><br>
-<input type="text" name="u_email" placeholder="email" id="u_email"><br>
-<input type="password" name="u_pass" placeholder="password" id="u_pass" autocomplete="ok"><br>
-<input type="password" name="u_cpass" placeholder="confirm password" id="u_cpass" autocomplete="okk"><br>
+<input type="text" name="u_first" placeholder="Enter First Name" id="u_first"><br>
+<input type="text" name="u_last" placeholder="Enter Last Name" id="u_last"><br>
+<input type="text" name="u_email" placeholder="Enter E-mail" id="u_email"><br>
+<input type="password" name="u_pass" placeholder="Enter Password" id="u_pass" autocomplete="ok"><br>
+<input type="password" name="u_cpass" placeholder="Confirm Password" id="u_cpass" autocomplete="okk"><br>
 <!--- <input type="submit" name="submit" value="SIGN-UP">
 -->
 

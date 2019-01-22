@@ -85,7 +85,7 @@ while($row=mysqli_fetch_assoc($tno2))
 		<td>
 			<!--<img src="picture/user-<?php //echo'1';?>.jpg">-->
 			<!--<img src='./picture/user-<?php //echo $row["ID"];?>'/>-->
-			<img src='picture/<?php echo $row["picture"]?>'/>
+			<img src='picture/<?php echo $row["picture"]?>' alt='image not found'/>
 		</td>
 </tr>	
 <?php
@@ -93,5 +93,7 @@ while($row=mysqli_fetch_assoc($tno2))
 ?>
 
 </table>
+<a href="../product/product.php"><button>add product</button></a>
+<a href="../product/viewproduct.php"><button>view product</button></a>
 </body>
 </html>

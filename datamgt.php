@@ -8,7 +8,7 @@ if (isset($_POST['sign_up']))
 {
 	if ($fname == NULL || $_POST['u_last'] == NULL || $_POST['u_email'] == NULL || $_POST['u_pass'] == NULL || $_POST['u_cpass'] == NULL) 
 	{
-	header("Location: ../form/sign-up.php?error=101");	
+	header("Location: ../form/index.php?error=101");	
 	}
 	else
 	{
@@ -16,17 +16,17 @@ if (isset($_POST['sign_up']))
 		if ($_POST['u_pass'] != $_POST['u_cpass']) 
 		{
 				
-				header("Location: ../form/sign-up.php?error=105");
+				header("Location: ../form/index.php?error=105");
 		}
 		else
 		{
 			if (strlen($_POST['u_pass']) <8) 
 			{
-				header("Location: ../form/sign-up.php?error=102");
+				header("Location: ../form/index.php?error=102");
 			}
 			elseif (!preg_match("/^[_\.0-9a-zA-Z]+@([0-9a-zA-Z][0-9a-zA-Z]+\.)+[a-zA-Z]{2,6}$/i", $email)) 
 			{
-				header("Location: ../form/sign-up.php?error=103");
+				header("Location: ../form/index.php?error=103");
 			}
 			else
 			{
@@ -41,7 +41,6 @@ if (isset($_POST['sign_up']))
 					echo "Error creating table: " . mysqli_error($con);
 			}*/
 				$lname=$_POST['u_last'];
-				
 				$pass=$_POST['u_pass'];
 				$cpass=$_POST['u_cpass'];
 				$date=date("Y/m/d");
