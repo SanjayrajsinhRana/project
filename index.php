@@ -33,9 +33,12 @@ input
 
 }
 </style>
-<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script> 
+<!-- <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script> 
 <script src="./assets/jquery.js"></script>
-<script src="./assets/jquery.validate.js"></script>
+<script src="./assets/jquery.validate.js"></script> -->
+<script src="../form/assets/jquery.validate.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="../form/assets/jquery.js"></script>
 
 </head>
 <body bgcolor="lightblue">
@@ -59,8 +62,12 @@ input
 			echo "Password And ConfirmPassword must be same.";
 		}
 ?>
+<div class="errorMsg"> 
+ <p id="er_msg_js" class="message"></p>
+    <?php if (isset($errorMsg)) { echo "<p class='message'>" .$errorMsg. "</p>" ;} ?>
+  </div>
 <h1 style="color: white; font-family: sans-serif;">SIGN-UP</h1>
-<form action="datamgt.php" method="POST" id="up_check">
+<form method="POST" id="up_check">
 <input type="text" name="u_first" placeholder="Enter First Name" id="u_first"><br>
 <input type="text" name="u_last" placeholder="Enter Last Name" id="u_last"><br>
 <input type="text" name="u_email" placeholder="Enter E-mail" id="u_email"><br>
@@ -71,36 +78,38 @@ input
 
 
 
-<button value="SIGN-UP" id="sign_up" class="btn_signup" name="sign_up">SIGNUP</button>
+<button type="button" value="SIGN-UP" id="sign_up" class="btn_signup" name="sign_up">SIGNUP</button>
 </form>
 <a href="login.php"><button class="btn_signup">Log-In</button></a>
 <script>
-	$(document).ready(function() {
-            $("#sign_up").click
-            (function(event){
-				
-				var u_first = $('#u_first').val();
+    $(document).ready(function(){
+    $("#sign_up").click(function(event){
+      			var u_first = $('#u_first').val();
 				var u_last = $('#u_last').val();
 				var u_email = $('#u_email').val();
 				var u_pass = $('#u_pass').val();
 				var u_cpass = $('#u_cpass').val();
-             	$.ajax({
-			        url: 'getdata.php',
-			        type: 'POST',
-			        data: { fname: u_first, lname: u_last,email:u_email,pass:u_pass,cpass:u_cpass} ,
-			        //contentType: 'application/json; charset=utf-8',
-			        success: function (response) {
-			            header("Location: ../form/login.php?signup=ok");
-			        },
-			        error: function () {
-			            alert("error");
-			        }
-			    }); 
-					
-            });
-         });
-
-</script>
+      $.ajax({
+        url: 'datamgt.php',
+        type: 'POST',
+        data: {sign_up : "sign_up",u_first : u_first, u_last : u_last, u_email : u_email, u_pass :u_pass, u_cpass: u_cpass},
+        success: function(response)
+        {
+          if(response == "success")
+          {
+           // window.location.replace = "login.php";
+          //  window.location.href = "login.php";
+            document.location.replace('login.php');
+          }
+          else
+          {
+            $('#er_msg_js').html(response);
+          }
+        }
+      });
+    });
+  });
+  </script>
 
 
 <!--<script>
